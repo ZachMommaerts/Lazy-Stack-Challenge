@@ -9,11 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        LazyVStack {
+            ScrollView{
+                ForEach(0...50, id: \.self){ index in
+                    
+                    Rectangle()
+                        .fill(RadialGradient(
+                            gradient:  Gradient(colors: [.orange, .yellow]), center: UnitPoint(x: 0.5, y: 0.5), startRadius: 0, endRadius: 200))
+                        .frame(height: pow(1.1, CGFloat(index)))
+                }
+            }
         }
         .padding()
     }
